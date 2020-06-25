@@ -71,7 +71,7 @@
       })
       .then(res => res.json())
       .then(res => {
-        document.cookie = "x-circle-id="+res[0]
+        document.cookie = "x-circle-id="+res.circles[0].id 
         window.location.reload(true)
       })
       .catch(err => alert("Nao foi possivel solicitar o circle matcher: " + err))
