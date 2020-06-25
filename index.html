@@ -36,14 +36,14 @@
 </head>
 <body>
   <div class="form">
-    Username: 
+    Username:
     <input type="text" id="username" />
     <button id="send">Send</button>
   </div>
   <div class="result">
     <img src="https://observatoriodeseries.uol.com.br/wp-content/uploads/2020/05/Novo-Projeto-65.jpg" />
   </div>
-  
+
   <script>
     var usernameInput = document.getElementById("username")
     var sendButton = document.getElementById("send")
@@ -57,9 +57,14 @@
           username: value
         }
       }
-
+      var myHeaders = new Headers({
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      })
       fetch(cirlcleMatcherURL, {
         method: "POST",
+        headers: myHeaders,
+        mode: "no-cors",
         body: JSON.stringify(payload)
       })
       .then(res => res.json())
