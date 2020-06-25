@@ -41,7 +41,7 @@
     <button id="send">Send</button>
   </div>
   <div class="result">
-    <img src="https://observatoriodeseries.uol.com.br/wp-content/uploads/2020/05/Novo-Projeto-65.jpg" />
+    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e809759b-e635-4f04-9900-bd3f58c59e88/d4szwux-c6aea180-d686-43b2-86bb-e41167747230.png/v1/fill/w_900,h_1859,q_75,strp/chibi_krilin_by_maffo1989-d4szwux.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9lODA5NzU5Yi1lNjM1LTRmMDQtOTkwMC1iZDNmNThjNTllODgvZDRzend1eC1jNmFlYTE4MC1kNjg2LTQzYjItODZiYi1lNDExNjc3NDcyMzAucG5nIiwid2lkdGgiOiI8PTkwMCIsImhlaWdodCI6Ijw9MTg1OSJ9XV19._etawdiPEEqevbYV7OiVWEz_WKKrTkQ31_zZGKeG8Qg" />
   </div>
 
   <script>
@@ -71,7 +71,7 @@
       })
       .then(res => res.json())
       .then(res => {
-        document.cookie = "x-circle-id="+res.circles[0].id 
+        document.cookie = "x-circle-id="+res.circles[0].id
         window.location.reload(true)
       })
       .catch(err => alert("Nao foi possivel solicitar o circle matcher: " + err))
