@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.ui.name }}
+  name: {{ .Values.name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.ui.name }}
-    version: {{ .Values.ui.name }}
+    app: {{ .Values.name }}
+    version: {{ .Values.name }}
 spec:
-  replicas: {{ .Values.ui.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.ui.name }}
-      version: {{ .Values.ui.name }}
+      app: {{ .Values.name }}
+      version: {{ .Values.name }}
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: '{{ .Values.sidecarIstio.enabled }}' 
       labels:
-        app: {{ .Values.ui.name }}
-        version: {{ .Values.ui.name }}
+        app: {{ .Values.name }}
+        version: {{ .Values.name }}
     spec:
       containers:
-        - name: {{ .Values.ui.name }}
-          image: {{ .Values.ui.image.name }}
+        - name: {{ .Values.name }}
+          image: {{ .Values.image.name }}
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -43,18 +43,18 @@ spec:
             periodSeconds: 20
             successThreshold: 1
             timeoutSeconds: 1 
-          imagePullPolicy: {{ .Values.ui.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
-{{ toYaml .Values.ui.resources | indent 12 }}
-    {{- with .Values.ui.nodeSelector }}
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
     {{- end }}
-    {{- with .Values.ui.affinity }}
+    {{- with .Values.affinity }}
       affinity:
 {{ toYaml . | indent 8 }}
     {{- end }}
-    {{- with .Values.ui.tolerations }}
+    {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
