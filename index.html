@@ -63,12 +63,18 @@
       })
       fetch(cirlcleMatcherURL, {
         method: "POST",
-        headers: myHeaders,
         mode: "no-cors",
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(payload)
       })
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => {
+        document.cookie = "x-circle-id="+res[0]
+        window.location.reload(true)
+      })
       .catch(err => alert("Nao foi possivel solicitar o circle matcher: " + err))
     })
   </script>
