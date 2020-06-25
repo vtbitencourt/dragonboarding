@@ -71,10 +71,15 @@
       })
       .then(res => res.json())
       .then(res => {
+        document.cookie = ""
         document.cookie = "x-circle-id="+res.circles[0].id
         window.location.reload(true)
       })
-      .catch(err => alert("Nao foi possivel solicitar o circle matcher: " + err))
+      .catch(err => {
+        console.log(err)
+        document.cookie = "UNMATCHED"
+        window.location.reload(true)
+      })
     })
   </script>
 </body>
